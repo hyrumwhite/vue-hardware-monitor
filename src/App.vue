@@ -1,28 +1,43 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <StatCard :number="25 + random"/>
+    <StatCard :number="58 + random"/>
+    <StatCard :number="93 + random"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import HelloWorld from "./components/HelloWorld.vue";
+import StatCard from "./components/stats-list/stat-card.vue";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    StatCard
+  },
+  data() {
+    return {
+      random: 0
+    };
+  },
+  mounted() {
+    window.setInterval(() => {
+      this.random = Math.floor(Math.random() * 70);
+    }, 1000);
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
 }
 </style>
